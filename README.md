@@ -1,7 +1,7 @@
 # [Nxt Trendz](https://sspnxttrendz.ccbp.tech/login)
 
 ### Login Credentials
-#### username:'rahul', password:'rahul@2021'
+#### username: 'rahul', password: 'rahul@2021'
 
 ### Refer to the video below:
 
