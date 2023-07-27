@@ -65,7 +65,7 @@ class PrimeDealsSection extends Component {
     return (
       <div>
         <h1 className="primedeals-list-heading">Exclusive Prime Deals</h1>
-        <ul className="products-list">
+        <ul className="prime-products-list">
           {primeDeals.map(product => (
             <ProductCard productData={product} key={product.id} />
           ))}
