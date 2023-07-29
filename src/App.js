@@ -58,11 +58,13 @@ class App extends Component {
   }
 
   addCartItem = product => {
-    const {cartList} = this.state
-    const productObject = cartList.find(
+    this.setState(prevState => ({
+      cartList: [...prevState.cartList, product],
+    }))
+
+    /* const productObject = cartList.find(
       eachCartItem => eachCartItem.id === product.id,
     )
-    console.log(productObject)
 
     if (productObject) {
       this.setState(prevState => ({
@@ -79,8 +81,8 @@ class App extends Component {
     } else {
       const updatedCartList = [...cartList, product]
 
-      this.setState({cartList: updatedCartList})
-    }
+      this.setState({cartList: updatedCartList, isAddedToCart: true})
+    } */
   }
 
   render() {

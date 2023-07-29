@@ -187,26 +187,24 @@
   background-color: #3b82f6;
   border: none;
   border-radius: 4px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 12px 20px;
   outline: none;
   cursor: pointer;
-}
-
-.add-to-cart-btn {
-  font-size: 12px;
   margin-bottom: 32px;
 }
 
 @media screen and (min-width: 768px) {
-  .add-to-cart-btn {
+  .button {
     font-size: 14px;
     margin-bottom: 48px;
   }
 }
-
+.add {
+  display: block;
+}
+.remove {
+  display: none;
+}
 .similar-products-heading {
   color: #3e4c59;
   font-family: 'Roboto';

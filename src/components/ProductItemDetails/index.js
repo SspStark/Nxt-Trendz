@@ -40,6 +40,7 @@ class ProductItemDetails extends Component {
     rating: data.rating,
     title: data.title,
     totalReviews: data.total_reviews,
+    isAddedToCart: false,
   })
 
   getProductData = async () => {
@@ -111,6 +112,11 @@ class ProductItemDetails extends Component {
     this.setState(prevState => ({quantity: prevState.quantity + 1}))
   }
 
+  onClickGoToCart = () => {
+    const {history} = this.props
+    history.push('/cart')
+  }
+
   renderProductDetailsView = () => (
     <CartContext.Consumer>
       {value => {
@@ -120,14 +126,22 @@ class ProductItemDetails extends Component {
           brand,
           description,
           imageUrl,
+          id,
           price,
           rating,
           title,
           totalReviews,
+          isAddedToCart,
         } = productData
-        const {addCartItem} = value
+        const {addCartItem, cartList} = value
         const onClickAddToCart = () => {
           addCartItem({...productData, quantity})
+        }
+
+        let updateAddToCart = isAddedToCart
+
+        if (cartList.find(each => each.id === id)) {
+          updateAddToCart = true
         }
 
         return (
@@ -163,7 +177,6 @@ class ProductItemDetails extends Component {
                     type="button"
                     className="quantity-controller-button"
                     onClick={this.onDecrementQuantity}
-                    data-testid="minus"
                   >
                     <BsDashSquare className="quantity-controller-icon" />
                   </button>
@@ -172,18 +185,27 @@ class ProductItemDetails extends Component {
                     type="button"
                     className="quantity-controller-button"
                     onClick={this.onIncrementQuantity}
-                    data-testid="plus"
                   >
                     <BsPlusSquare className="quantity-controller-icon" />
                   </button>
                 </div>
-                <button
-                  type="button"
-                  className="button add-to-cart-btn"
-                  onClick={onClickAddToCart}
-                >
-                  ADD TO CART
-                </button>
+                {!updateAddToCart ? (
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={onClickAddToCart}
+                  >
+                    ADD TO CART
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={this.onClickGoToCart}
+                  >
+                    GO TO CART
+                  </button>
+                )}
               </div>
             </div>
             <h1 className="similar-products-heading">Similar Products</h1>
