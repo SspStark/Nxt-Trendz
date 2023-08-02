@@ -13,7 +13,7 @@
 </div>
 <br/>
 
-### Design Files
+## Design Files
 
 <details>
 <summary>Click to view</summary>
